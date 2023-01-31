@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        * {
+            font-size: larger;
+            text-align: center;
+            padding: 1rem 1rem;
+            background-color: rgb(128, 201, 232);
+        }
+
+        input {
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            background: linear-gradient(rgba(127, 182, 255, 0.368), rgba(255, 146, 255, 0.39));
+        }
+
+        button {
+            background: linear-gradient(rgb(0, 213, 255), rgb(255, 0, 255));
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="result"></div>
+    <input type="number" name="" id="input1" placeholder="enter 1st Number">
+    <input type="number" name="" id="input2" placeholder="enter 2nd Number">
+    <div class="btn">
+        <button onclick="add()">Add</button>
+        <button onclick="substract()">Subtract</button>
+        <button onclick="multiply()">Multiply</button>
+        <button onclick="divde()">Divide</button>
+    </div>
+</body>
+
+</html>
+<script>
+
+    function add() {
+        let valueOne = parseInt(document.getElementById("input1").value)
+        let valueTwo = parseInt(document.getElementById("input2").value)
+        alert(valueOne + valueTwo)
+    }
+
+    function substract() {
+        let valueOne = parseInt(document.getElementById("input1").value)
+        let valueTwo = parseInt(document.getElementById("input2").value)
+        alert(valueOne - valueTwo)
+    }
+
+    function multiply() {
+        let valueOne = document.getElementById("input1").value
+        let valueTwo = document.getElementById("input2").value
+        alert(valueOne * valueTwo)
+    }
+
+    function divde() {
+        let valueOne = document.getElementById("input1").value
+        let valueTwo = document.getElementById("input2").value
+        alert(valueOne / valueTwo)
+    }
+
+
+</script>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b06a377e67.js" crossorigin="anonymous"></script>
+    <title>stopwatch</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: rgb(0, 0, 0);
+        }
+        #stopwatch{
+            margin-top: 5rem;
+        
+        }
+        h1{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-shadow: 2px 2px 2px rgb(255, 0, 242);
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        #timer {
+           padding: 20px;
+            font-size: 3rem;
+            display: flex;
+            border: 2px dashed rgb(255, 255, 255);
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            align-items: center;
+            margin: 40px auto;
+            justify-content: center;
+            color: white;
+            box-shadow: 4px 4px 30px rgb(255, 255, 255);
+            text-shadow: 2px 2px 2px rgb(255, 3, 167);
+        }
+        #timer:hover{
+            transition: all 2s;
+            cursor: progress;
+            box-shadow: 4px 4px 4em rgb(8, 243, 255);
+        }
+        
+        #options{
+            display: flex;
+           justify-content: center;
+           text-align: center;
+           
+        }
+        #options>div{
+            
+            cursor: pointer;
+            color: rgb(166, 3, 254);
+            text-shadow: 2px 2px 2px white;
+            margin: 1rem;
+            font-size:3rem;
+            transition: all .5s;
+        }
+        #options>div:hover{
+            color: rgb(253, 0, 253);
+            text-shadow: 4px 4px 30px rgb(255, 255, 255);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="stopwatch">
+        <h1>STOPWATCH</h1>
+        <div id="timer">
+            <dv id="hours">0</dv>:
+            <div id="minutes">0</div>:
+            <div id="seconds">0</div>:
+            <div id="milliseconds">0</div>
+        </div>
+        <div id="options">
+            <div onclick="startTimer()"><i class="fa-solid fa-stopwatch"></i></div>
+            <div onclick="stopTimer()"><i class="fa-solid fa-stop"></i></div>
+            <div onclick="ResetTimer()"><i class="fa-solid fa-repeat"></i></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+    let milliseconds = 0;
+
+    let startTimer = function () {
+        millisecInt = setInterval(function () {
+            milliseconds = (milliseconds > 1000) ? 1 : (milliseconds + 1);
+            setTimeToHTML(hours, minutes, seconds, milliseconds)
+        }, 1)
+
+        secondsInt = setInterval(function () {
+            seconds = (seconds > 59) ? 1 : (seconds + 1)
+        }, 1000)
+
+        minutesInt = setInterval(function () {
+            minutes = (minutes > 59) ? 1 : (minutes + 1)
+        }, 1000 * 60)
+
+        hoursInt = setInterval(function () {
+            hours = (hours > 59) ? 1 : (hours + 1)
+        }, 1000 * 60 * 60)
+
+    }
+    let stopTimer = function() {
+        clearInterval(millisecInt); clearInterval(secondsInt); clearInterval(minutesInt); clearInterval(hoursInt)
+    }
+    let ResetTimer = function(){
+        stopTimer();
+      hours=0; minutes=0; seconds=0; milliseconds=0;
+      setTimeToHTML (hours, minutes, seconds, milliseconds) 
+    }
+
+
+    let setTimeToHTML = function (hours, minutes, seconds, milliseconds) {
+        document.getElementById("hours").innerText = (hours.length == 1) ? ("0" + hours) : hours;
+        document.getElementById("minutes").innerText = (minutes.length == 1) ? ("0" + minutes) : minutes;
+        document.getElementById("seconds").innerText = (seconds.length == 1) ? ("0" + seconds) : seconds;
+        document.getElementById("milliseconds").innerText = milliseconds;
+    }
+
+</script>

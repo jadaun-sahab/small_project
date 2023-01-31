@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(3, 3, 3);
+            transition: all 2s;
+        }
+
+        h1 {
+            font-size: 3rem;
+            height: 200px;
+            background-color: black;
+            color: rgb(237, 41, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 2px 2px 2px rgb(255, 255, 255);
+        }
+
+        #clock {
+            background-color: rgb(16, 15, 18);
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh;
+        }
+
+        #clock div {
+            border-radius: 50% ;
+            background-color: rgba(0, 0, 0, 0.466);
+            color: white;
+            box-shadow: 4px 4px 24px rgb(255, 20, 243);
+            padding: 30px;
+            margin: 30px;
+        }
+
+        span {
+            color: white;
+            font-size: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Digital Clock</h1>
+    <div id="clock">
+        <div id="hrs"></div>
+        <span>:</span>
+        <div id="mins"></div>
+        <span>:</span>
+        <div id="secs"></div>
+        <span>:</span>
+        <div id="ampm"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    let clock = function () {
+
+        let date = new Date()
+        let hours = date.getHours()
+        let minutes = date.getMinutes()
+        let seconds = date.getSeconds()
+
+        let half = ""
+        if (hours >= 12) {
+            half = "PM"
+        }
+        else {
+            half = "AM"
+        }
+
+        document.getElementById("hrs").innerText = hours
+        document.getElementById("mins").innerText = minutes;
+        document.getElementById("secs").innerText = seconds;
+        document.getElementById("ampm").innerText = half;
+
+        setInterval(clock, 1000);
+    };
+    clock();
+
+
+
+</script>
